@@ -255,6 +255,9 @@
     .platform-pill.ubereats:hover { border-color: rgba(6,211,89,.55); background: rgba(6,211,89,.06); }
     .platform-pill.tgtg     { border-color: rgba(38,190,108,.22); }
     .platform-pill.tgtg:hover     { border-color: rgba(38,190,108,.55); background: rgba(38,190,108,.06); }
+    /* Reparto propio */
+    .platform-pill.propio  { border-color: rgba(201,168,76,.35); background: rgba(201,168,76,.05); }
+    .platform-pill.propio:hover  { border-color: var(--gold); background: rgba(201,168,76,.12); }
 
     /* ══════════════════════════════════════
        STATS
@@ -311,7 +314,7 @@
     ══════════════════════════════════════ */
     #menu { background: var(--black); }
     .menu-tabs {
-      display: flex; max-width: 760px; margin: 0 auto clamp(1.2rem,3vw,2.5rem);
+      display: flex; max-width: 900px; margin: 0 auto clamp(1.2rem,3vw,2.5rem);
       border: 1px solid rgba(201,168,76,.18); border-radius: 3px; overflow: hidden; flex-wrap: wrap;
     }
     .menu-tab {
@@ -323,6 +326,17 @@
     .menu-tab:last-child { border-right: none; }
     .menu-tab.active { background: linear-gradient(135deg,rgba(201,168,76,.14),rgba(232,66,10,.07)); color: var(--gold-light); }
     .menu-tab:hover:not(.active) { color: rgba(245,237,213,.72); background: rgba(201,168,76,.04); }
+
+    /* ── Badge especial para la pestaña Menús ── */
+    .menu-tab.tab-menus { position: relative; }
+    .menu-tab.tab-menus .tab-badge {
+      display: inline-block; margin-left: .35rem;
+      font-size: .44rem; letter-spacing: .06em; padding: 1px 5px;
+      background: linear-gradient(135deg, var(--gold), var(--ember-soft));
+      color: var(--black); border-radius: 20px; vertical-align: middle;
+      font-weight: 700; line-height: 1.4;
+    }
+
     .menu-panel { display: none; }
     .menu-panel.active { display: block; }
 
@@ -369,10 +383,16 @@
     }
     .menu-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.3); box-shadow: 0 12px 30px rgba(0,0,0,.44); }
 
-    /* ── Imagen del plato ──
-       Pon tu foto en src="fotos/nombre.jpg"
-       Si no hay imagen, se muestra el emoji de data-emoji automáticamente
-    ── */
+    /* Tarjeta de Menú con borde dorado especial */
+    .menu-card.menu-especial {
+      border-color: rgba(201,168,76,.22);
+      background: linear-gradient(145deg,#1e1609,#2a1e0a);
+    }
+    .menu-card.menu-especial:hover {
+      border-color: rgba(201,168,76,.5);
+      box-shadow: 0 12px 36px rgba(201,168,76,.18);
+    }
+
     .menu-card-img-wrap {
       width: 100%; aspect-ratio: 4/3; overflow: hidden; flex-shrink: 0;
       background: linear-gradient(135deg,#1a1208,#2a1e0a);
@@ -398,6 +418,24 @@
     .menu-card-footer { display: flex; align-items: center; justify-content: space-between; gap: .4rem; }
     .menu-card-price { font-family: 'Cinzel Decorative', serif; font-size: .96rem; color: var(--gold); }
     .menu-card-tag { font-family: 'Cinzel', serif; font-size: .53rem; letter-spacing: .08em; padding: 3px 8px; border: 1px solid rgba(201,168,76,.25); color: rgba(201,168,76,.52); border-radius: 20px; white-space: nowrap; }
+
+    /* Tag especial para Menús */
+    .menu-card-tag.tag-menu {
+      border-color: rgba(201,168,76,.45);
+      color: var(--gold-light);
+      background: rgba(201,168,76,.07);
+    }
+
+    /* Lista de incluidos dentro de la card de menú */
+    .menu-includes {
+      list-style: none; margin-bottom: .8rem; display: flex; flex-direction: column; gap: .22rem;
+    }
+    .menu-includes li {
+      font-size: clamp(.72rem,.95vw,.8rem); color: rgba(245,237,213,.48);
+      display: flex; align-items: center; gap: .4rem; line-height: 1.4;
+    }
+    .menu-includes li::before { content: '✦'; color: var(--gold); font-size: .5rem; flex-shrink: 0; opacity: .7; }
+
     .carousel-btn {
       position: absolute; top: 50%; transform: translateY(-60%); z-index: 3;
       width: 36px; height: 36px; border-radius: 50%;
@@ -717,7 +755,6 @@
         <div class="medallion-ring"></div>
         <div class="medallion-glow"></div>
         <div class="medallion-img-wrap">
-          <!-- ── Logo principal del restaurante ── -->
           <img src="logo.png" alt="Cocina Farina" onerror="this.style.display='none'"/>
         </div>
         <span class="star-ornament">✦</span>
@@ -739,13 +776,19 @@
         <span class="pill-icon"><img src="https://cdn.simpleicons.org/justeat/FF8000" alt="Just Eat"/></span>
         <div><span class="pill-name">Just Eat</span><span class="pill-sub">Delivery a domicilio</span></div>
       </a>
-      <a href="#" class="platform-pill glovo" target="_blank" rel="noopener">
+      <a href="https://glovoapp.com/es/es/alcala-de-henares-y-torrejon-de-ardoz/stores/cocina-farina-torrejon-de-ardoz" class="platform-pill glovo" target="_blank" rel="noopener">
         <span class="pill-icon"><img src="https://cdn.simpleicons.org/glovo/FFC244" alt="Glovo"/></span>
         <div><span class="pill-name">Glovo</span><span class="pill-sub">Entrega express</span></div>
       </a>
-      <a href="#" class="platform-pill ubereats" target="_blank" rel="noopener">
+      <a href="https://www.ubereats.com/es/store/comida-casera-farina/7YvhnffSRq2cLpYiApEQMw" class="platform-pill ubereats" target="_blank" rel="noopener">
         <span class="pill-icon"><img src="https://cdn.simpleicons.org/ubereats/06C167" alt="Uber Eats"/></span>
         <div><span class="pill-name">Uber Eats</span><span class="pill-sub">Delivery rápido</span></div>
+      </a>
+      <!-- NUEVO: Reparto propio (solo Torrejón) -->
+      <a href="https://wa.me/659283678?text=Hola%20Do%C3%B1a%20Farina%2C%20quiero%20pedir%20por%20reparto%20propio%20a%20Torrej%C3%B3n%20%F0%9F%9A%9A"
+         class="platform-pill propio" target="_blank" rel="noopener">
+        <span class="pill-icon">🚚</span>
+        <div><span class="pill-name">Reparto Propio</span><span class="pill-sub">Solo Torrejón de Ardoz · Pide por WhatsApp</span></div>
       </a>
     </div>
     <div class="strip-divider" style="max-width:480px;width:100%;">
@@ -757,7 +800,7 @@
         <span class="pill-icon"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp"/></span>
         <div><span class="pill-name">WhatsApp</span><span class="pill-sub">Pide y recoge cuando quieras</span></div>
       </a>
-      <a href="#" class="platform-pill tgtg" target="_blank" rel="noopener">
+      <a href="https://share.toogoodtogo.com/item/128061831334672608/" class="platform-pill tgtg" target="_blank" rel="noopener">
         <span class="pill-icon">🌿</span>
         <div><span class="pill-name">Too Good To Go</span><span class="pill-sub">Bolsa sorpresa · Recogida en local</span></div>
       </a>
@@ -779,12 +822,11 @@
 
 <div class="decorative-border"></div>
 
-<!-- ░░░ HISTORIA — imagen sin clase "reveal" → siempre visible en móvil ░░░ -->
+<!-- ░░░ HISTORIA ░░░ -->
 <section id="historia">
   <div class="historia-grid">
     <div class="historia-img-col">
       <div class="historia-img-box">
-        <!-- ── Foto de Farina ── -->
         <img src="farina.png" alt="Doña Farina"
           onerror="this.parentElement.style.background='linear-gradient(160deg,#2a1e0a,#1a1208)'; this.remove()"/>
       </div>
@@ -828,10 +870,14 @@
     <div class="section-divider"><span>✦</span></div>
   </div>
 
+  <!-- ══ 4 PESTAÑAS ══ -->
   <div class="menu-tabs">
-    <button class="menu-tab active" onclick="switchTab('diarios')">Platos Diarios</button>
-    <button class="menu-tab"        onclick="switchTab('encargo')">Platos por Encargo</button>
-    <button class="menu-tab"        onclick="switchTab('postres')">Postres</button>
+    <button class="menu-tab active"  onclick="switchTab('diarios')">Platos Diarios</button>
+    <button class="menu-tab"         onclick="switchTab('encargo')">Platos por Encargo</button>
+    <button class="menu-tab"         onclick="switchTab('postres')">Postres</button>
+    <button class="menu-tab tab-menus" onclick="switchTab('menus')">
+      Menús <span class="tab-badge">OFERTA</span>
+    </button>
   </div>
 
   <!-- ══════════════════════════
@@ -846,7 +892,6 @@
         <!-- Pollo Asado -->
         <div class="menu-card">
           <div class="menu-card-img-wrap" data-emoji="🍗">
-            <!-- ── Cambia src por la ruta de tu foto ── -->
             <img src="alimentos/platos diarios/Pollo asado 1,600gr 9,90€.PNG" alt="Pollo Asado"
                  onerror="this.parentElement.classList.add('no-img')"/>
           </div>
@@ -858,59 +903,59 @@
           </div>
         </div>
 
-  <!-- Alitas Marinadas -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🍗">
-    <img src="alimentos/platos diarios/Alitas marinadas 1 racion 8 unidades 9,90€.PNG" alt="Alitas Marinadas"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Casera</div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Alitas Marinadas</div>
-    <div class="menu-card-desc">Ocho alitas con marinada casera y especias propias. Jugosas, doradas y llenas de sabor.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">9,90€</span><span class="menu-card-tag">8 Unidades</span></div>
-  </div>
-</div>
+        <!-- Alitas Marinadas -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🍗">
+            <img src="alimentos/platos diarios/Alitas marinadas 1 racion 8 unidades 9,90€.PNG" alt="Alitas Marinadas"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Casera</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Alitas Marinadas</div>
+            <div class="menu-card-desc">Ocho alitas con marinada casera y especias propias. Jugosas, doradas y llenas de sabor.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">9,90€</span><span class="menu-card-tag">8 Unidades</span></div>
+          </div>
+        </div>
 
-<!-- Croquetas Caseras de Jamón -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🍖">
-    <img src="alimentos/platos diarios/Croquetas caseras jamón 9,90€.PNG"Croquetas Caseras de Jamón"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-badge">🔥 Más Pedido</div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Croquetas Caseras de Jamón</div>
-    <div class="menu-card-desc">Bechamel artesana y jamón de calidad. Crujientes por fuera, cremosas por dentro. La receta de siempre.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">9,90€</span><span class="menu-card-tag">1 Ración</span></div>
-  </div>
-</div>
+        <!-- Croquetas Caseras de Jamón -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🍖">
+            <img src="alimentos/platos diarios/Croquetas caseras jamón 9,90€.PNG" alt="Croquetas Caseras de Jamón"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge">🔥 Más Pedido</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Croquetas Caseras de Jamón</div>
+            <div class="menu-card-desc">Bechamel artesana y jamón de calidad. Crujientes por fuera, cremosas por dentro. La receta de siempre.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">9,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
 
-<!-- Patatas Arrugadas con Ajo y Perejil -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🥔">
-    <img src="alimentos/platos diarios/Patatas arrugadas con ajo y perejil 6 unidades 4,90€.PNG" alt="Patatas Arrugadas con Ajo y Perejil"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Patatas Arrugadas con Ajo y Perejil</div>
-    <div class="menu-card-desc">Patatas pequeñas cocidas con su piel, aliñadas con ajo y perejil fresco. Sencillas y adictivas.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">4,90€</span><span class="menu-card-tag">6 Unidades</span></div>
-  </div>
-</div>
+        <!-- Patatas Arrugadas con Ajo y Perejil -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🥔">
+            <img src="alimentos/platos diarios/Patatas arrugadas con ajo y perejil 6 unidades 4,90€.PNG" alt="Patatas Arrugadas con Ajo y Perejil"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Patatas Arrugadas con Ajo y Perejil</div>
+            <div class="menu-card-desc">Patatas pequeñas cocidas con su piel, aliñadas con ajo y perejil fresco. Sencillas y adictivas.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">4,90€</span><span class="menu-card-tag">6 Unidades</span></div>
+          </div>
+        </div>
 
-<!-- Patatas Panaderas -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🥔">
-    <img src="alimentos/platos diarios/Patatas panaderas 1 racion 650gr 4,50€.PNG" alt="Patatas Panaderas"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Patatas Panaderas</div>
-    <div class="menu-card-desc">Al horno con cebolla y aceite de oliva. Tiernas y melosas, el acompañante clásico de los asados.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">4,50€</span><span class="menu-card-tag">650 gr</span></div>
-  </div>
-</div>
+        <!-- Patatas Panaderas -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🥔">
+            <img src="alimentos/platos diarios/Patatas panaderas 1 racion 650gr 4,50€.PNG" alt="Patatas Panaderas"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Patatas Panaderas</div>
+            <div class="menu-card-desc">Al horno con cebolla y aceite de oliva. Tiernas y melosas, el acompañante clásico de los asados.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">4,50€</span><span class="menu-card-tag">650 gr</span></div>
+          </div>
+        </div>
 
         <!-- Croquetas de Pollo -->
         <div class="menu-card">
@@ -968,7 +1013,7 @@
         <!-- Tortilla 30cm -->
         <div class="menu-card">
           <div class="menu-card-img-wrap" data-emoji="🍳">
-            <img src="alimentos/platos diarios/Tortilla de patata con cebolla 30cm 10,50€.PNG" alt="Tortilla de Patatas 30cm"
+            <img src="alimentos/platos diarios/Tortilla de patata con cebolla 30cm 10,50€.png" alt="Tortilla de Patatas 30cm"
                  onerror="this.parentElement.classList.add('no-img')"/>
           </div>
           <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Familiar</div>
@@ -992,60 +1037,45 @@
           </div>
         </div>
 
-        <!-- Paella Valenciana → Platos Diarios -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🍚">
-    <img src="alimentos/platos diarios/Paella valenciana 1 racion 6,90€.PNG" alt="Paella Valenciana"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Paella Valenciana</div>
-    <div class="menu-card-desc">Con pollo, conejo, judías verdes y garrofón. Socarrat perfecto al estilo auténtico.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">6,90€</span><span class="menu-card-tag">1 Ración</span></div>
-  </div>
-</div>
+        <!-- Paella Valenciana -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🍚">
+            <img src="alimentos/platos diarios/Paella valenciana 1 racion 6,90€.PNG" alt="Paella Valenciana"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Paella Valenciana</div>
+            <div class="menu-card-desc">Con pollo, conejo, judías verdes y garrofón. Socarrat perfecto al estilo auténtico.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">6,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
 
-<!-- Paella Mixta → Platos Diarios -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🥘">
-    <img src="alimentos/platos diarios/Paella mixta 1 ración 7,90€.PNG" alt="Paella Mixta"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Paella Mixta</div>
-    <div class="menu-card-desc">Carne y marisco en un arroz sabroso con el punto perfecto. Lo mejor de dos mundos.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">7,90€</span><span class="menu-card-tag">1 Ración</span></div>
-  </div>
-</div>
+        <!-- Paella Mixta -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🥘">
+            <img src="alimentos/platos diarios/Paella mixta 1 ración 7,90€.PNG" alt="Paella Mixta"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Paella Mixta</div>
+            <div class="menu-card-desc">Carne y marisco en un arroz sabroso con el punto perfecto. Lo mejor de dos mundos.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">7,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
 
-<!-- Paella de Mariscos → Platos Diarios -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🦐">
-    <img src="alimentos/platos diarios/Paella de mariscos 1 racion 8,90€.PNG" alt="Paella de Mariscos"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Premium</div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Paella de Mariscos</div>
-    <div class="menu-card-desc">Gambas, mejillones y almejas sobre un sofrito cargado de sabor a mar.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">1 Ración</span></div>
-  </div>
-</div>
-
-<!-- Menú Paella → Platos Diarios -->
-<div class="menu-card">
-  <div class="menu-card-img-wrap" data-emoji="🥘">
-    <img src="alimentos/platos diarios/Menú 2 ración de paella + 1 ensalada + 2 postre+ 2 refresco 25,90€.png" alt="Menú Paella"
-         onerror="this.parentElement.classList.add('no-img')"/>
-  </div>
-  <div class="menu-card-badge">🔥 Más Pedido</div>
-  <div class="menu-card-body">
-    <div class="menu-card-name">Menú Paella</div>
-    <div class="menu-card-desc">2 raciones de paella + 1 ensalada + 2 postres + 2 refrescos. Para los amantes del arroz.</div>
-    <div class="menu-card-footer"><span class="menu-card-price">25,90€</span><span class="menu-card-tag">Para 2 personas</span></div>
-  </div>
-</div>
-
+        <!-- Paella de Mariscos -->
+        <div class="menu-card">
+          <div class="menu-card-img-wrap" data-emoji="🦐">
+            <img src="alimentos/platos diarios/Paella de mariscos 1 racion 8,90€.PNG" alt="Paella de Mariscos"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Premium</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Paella de Mariscos</div>
+            <div class="menu-card-desc">Gambas, mejillones y almejas sobre un sofrito cargado de sabor a mar.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
 
         <!-- Pimientos Fritos -->
         <div class="menu-card">
@@ -1083,7 +1113,6 @@
   ══════════════════════════ -->
   <div id="tab-encargo" class="menu-panel">
 
-    <!-- Aviso encargo -->
     <div class="encargo-notice">
       <span class="encargo-notice-icon">⏰</span>
       <div class="encargo-notice-body">
@@ -1149,8 +1178,6 @@
     <p class="carousel-hint">← Desliza para ver más →</p>
   </div>
 
-  
-
   <!-- ══════════════════════════
        POSTRES
   ══════════════════════════ -->
@@ -1174,6 +1201,128 @@
           </div>
         </div>
 
+      </div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+
+  <!-- ══════════════════════════
+       MENÚS COMPLETOS
+  ══════════════════════════ -->
+  <div id="tab-menus" class="menu-panel">
+
+    <div class="menu-carousel-outer">
+      <button class="carousel-btn prev" onclick="scrollCarousel('tab-menus',-1)">&#8592;</button>
+      <button class="carousel-btn next" onclick="scrollCarousel('tab-menus',1)">&#8594;</button>
+      <div class="menu-grid">
+
+        <!-- Menú Pollo Simple -->
+        <div class="menu-card menu-especial">
+          <div class="menu-card-img-wrap" data-emoji="🍗">
+            <img src="alimentos/platos menus/Menu pollo + guarnición 13,50€.PNG" alt="Menú Pollo con Guarnición"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:linear-gradient(135deg,var(--gold),var(--ember-soft));color:var(--black);">🍽️ Menú</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Menú Pollo con Guarnición</div>
+            <ul class="menu-includes">
+              <li>Pollo asado de Farina</li>
+              <li>Guarnición</li>
+            </ul>
+            <div class="menu-card-footer">
+              <span class="menu-card-price">13,50€</span>
+              <span class="menu-card-tag tag-menu">Para 1 persona</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menú Pollo Completo -->
+        <div class="menu-card menu-especial">
+          <div class="menu-card-img-wrap" data-emoji="🥗">
+            <img src="alimentos/platos menus/Menu 2 pollo asado + guarnición ensalada + 1postre+  refresco 17,90€.jpg.jpeg" alt="Menú Pollo Ensalada Postre Refresco"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:linear-gradient(135deg,var(--gold),var(--ember-soft));color:var(--black);">🍽️ Menú</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Menú Pollo Completo</div>
+            <ul class="menu-includes">
+              <li>Pollo asado de Farina</li>
+              <li>Guarnición + Ensalada</li>
+              <li>1 Postre casero</li>
+              <li>1 Refresco</li>
+            </ul>
+            <div class="menu-card-footer">
+              <span class="menu-card-price">17,90€</span>
+              <span class="menu-card-tag tag-menu">Para 1 persona</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menú Pollo & Arroz -->
+        <div class="menu-card menu-especial">
+          <div class="menu-card-img-wrap" data-emoji="🍚">
+            <img src="alimentos/platos menus/Menu pollo asado + guarnición + 2 postres + 2 refrescos + arroz blanco 25€.png" alt="Menú Pollo Arroz Blanco"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge">🔥 Más Pedido</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Menú Pollo &amp; Arroz</div>
+            <ul class="menu-includes">
+              <li>Pollo asado de Farina</li>
+              <li>Guarnición + Arroz blanco</li>
+              <li>2 Postres caseros</li>
+              <li>2 Refrescos</li>
+            </ul>
+            <div class="menu-card-footer">
+              <span class="menu-card-price">25,00€</span>
+              <span class="menu-card-tag tag-menu">Para 2 personas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menú Paella para 2 -->
+        <div class="menu-card menu-especial">
+          <div class="menu-card-img-wrap" data-emoji="🥘">
+            <img src="alimentos/platos menus/Menú 2 ración de paella + 1 ensalada + 2 postre+ 2 refresco 25,90€.png" alt="Menú Paella para 2"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Favorito</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Menú Paella para 2</div>
+            <ul class="menu-includes">
+              <li>2 Raciones de paella</li>
+              <li>1 Ensalada</li>
+              <li>2 Postres caseros</li>
+              <li>2 Refrescos</li>
+            </ul>
+            <div class="menu-card-footer">
+              <span class="menu-card-price">25,90€</span>
+              <span class="menu-card-tag tag-menu">Para 2 personas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menú Familiar Pollo -->
+        <div class="menu-card menu-especial">
+          <div class="menu-card-img-wrap" data-emoji="🍗">
+            <img src="alimentos/platos menus/Menu 4 pollo asado guarnición + 2 refresco +2 postre+ 1 tortilla de patatas 24,90€.png" alt="Menú Familiar 4 Pollos"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge" style="background:var(--gold);color:var(--black);">★ Familiar</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Menú Familiar Pollo</div>
+            <ul class="menu-includes">
+              <li>1 Pollos asados con guarnición</li>
+              <li>1 Tortilla de patatas</li>
+              <li>2 Postres caseros</li>
+              <li>2 Refrescos</li>
+            </ul>
+            <div class="menu-card-footer">
+              <span class="menu-card-price">24,90€</span>
+              <span class="menu-card-tag tag-menu">Familiar</span>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -1276,7 +1425,7 @@
         <div class="pedir-card-header">
           <span class="pedir-card-icon">🛵</span>
           <h3>Delivery a Domicilio</h3>
-          <p>Pide desde la app que más uses. Ellas gestionan el reparto y el seguimiento en tiempo real. Sin llamadas, sin esperas.</p>
+          <p>Pide desde la app que más uses o solicita nuestro reparto propio (solo Torrejón de Ardoz). Ellas gestionan el reparto y el seguimiento en tiempo real.</p>
         </div>
         <div class="pedir-platforms">
           <a href="#" class="pedir-platform-btn ppb-justeat" target="_blank" rel="noopener">
@@ -1286,17 +1435,26 @@
             </div>
             <span class="ppb-arrow">→</span>
           </a>
-          <a href="#" class="pedir-platform-btn ppb-glovo" target="_blank" rel="noopener">
+          <a href="https://glovoapp.com/es/es/alcala-de-henares-y-torrejon-de-ardoz/stores/cocina-farina-torrejon-de-ardoz" class="pedir-platform-btn ppb-glovo" target="_blank" rel="noopener">
             <div class="ppb-left">
               <span class="ppb-icon" style="background:rgba(255,194,68,.1);"><img src="https://cdn.simpleicons.org/glovo/FFC244" alt="Glovo"/></span>
               <div><span class="ppb-name">Glovo</span><span class="ppb-sub">Entrega express en minutos</span></div>
             </div>
             <span class="ppb-arrow">→</span>
           </a>
-          <a href="#" class="pedir-platform-btn ppb-ubereats" target="_blank" rel="noopener">
+          <a href="https://www.ubereats.com/es/store/comida-casera-farina/7YvhnffSRq2cLpYiApEQMw" class="pedir-platform-btn ppb-ubereats" target="_blank" rel="noopener">
             <div class="ppb-left">
               <span class="ppb-icon" style="background:rgba(6,193,103,.1);"><img src="https://cdn.simpleicons.org/ubereats/06C167" alt="Uber Eats"/></span>
               <div><span class="ppb-name">Uber Eats</span><span class="ppb-sub">Sigue tu pedido en directo</span></div>
+            </div>
+            <span class="ppb-arrow">→</span>
+          </a>
+          <!-- NUEVO: Reparto propio (solo Torrejón) dentro de la tarjeta -->
+          <a href="https://wa.me/659283678?text=Hola%20Do%C3%B1a%20Farina%2C%20quiero%20pedir%20por%20reparto%20propio%20a%20Torrej%C3%B3n%20%F0%9F%9A%9A"
+             class="pedir-platform-btn" style="border-color: rgba(201,168,76,.3);" target="_blank" rel="noopener">
+            <div class="ppb-left">
+              <span class="ppb-icon" style="background:rgba(201,168,76,.1);">🚚</span>
+              <div><span class="ppb-name">Reparto Propio</span><span class="ppb-sub">Solo Torrejón de Ardoz · Pide por WhatsApp</span></div>
             </div>
             <span class="ppb-arrow">→</span>
           </a>
@@ -1322,7 +1480,7 @@
             Pedir por WhatsApp
           </a>
           <div class="recogida-divider"><span>o también</span></div>
-          <a href="#" class="tgtg-block" target="_blank" rel="noopener">
+          <a href="https://share.toogoodtogo.com/item/128061831334672608/" class="tgtg-block" target="_blank" rel="noopener">
             <span class="tgtg-block-icon">🌿</span>
             <div class="tgtg-block-text">
               <span class="tgtg-block-name">Too Good To Go <span class="tgtg-badge">Solo Recogida</span></span>
@@ -1378,7 +1536,7 @@
         <span class="contact-icon">🛵</span>
         <div class="contact-text">
           <strong>Delivery a domicilio</strong>
-          Just Eat · Glovo · Uber Eats
+          Just Eat · Glovo · Uber Eats · Reparto propio (solo Torrejón de Ardoz)
         </div>
       </div>
       <div class="contact-item">
@@ -1393,8 +1551,7 @@
       <table class="horarios-table">
         <tr><td>Lunes</td><td class="closed">Cerrado</td></tr>
         <tr><td>Martes – Domingo</td><td>11:00 am – 16:00 pm</td></tr>
-    
-      </table>
+       </table>
       <br/>
       <p style="font-size:.78rem;color:rgba(245,237,213,.28);font-style:italic;line-height:1.65;">
         * Los horarios pueden variar en días especiales. Recomendamos llamar antes de venir.
@@ -1402,11 +1559,6 @@
     </div>
 
     <div class="reveal">
-      <!-- ══════════════════════════════════════
-           MAPA INTERACTIVO
-           El iframe apunta a la dirección del local.
-           Para cambiar la ubicación, reemplaza la URL del src del iframe.
-      ══════════════════════════════════════ -->
       <div class="map-iframe-wrap">
         <iframe
           src="https://maps.google.com/maps?q=C.+de+Minotauro+106+Torre%C3%B3n+de+Ardoz+Madrid+Espa%C3%B1a&output=embed&z=16&hl=es"
@@ -1435,12 +1587,6 @@
           <div class="footer-logo-name">Doña Farina</div>
         </div>
         <p class="footer-tagline">Cocina española casera hecha con los mejores ingredientes y todo el cariño del mundo. Sin atajos. Sin precocinados. Solo de verdad.</p>
-        <div class="footer-platforms">
-          <a class="footer-platform-badge" href="#" target="_blank" rel="noopener">Just Eat</a>
-          <a class="footer-platform-badge" href="#" target="_blank" rel="noopener">Glovo</a>
-          <a class="footer-platform-badge" href="#" target="_blank" rel="noopener">Uber Eats</a>
-          <a class="footer-platform-badge tgtg" href="#" target="_blank" rel="noopener">Too Good To Go</a>
-        </div>
         <div class="social-links">
           <a class="social-link" href="#" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"/></a>
           <a class="social-link" href="#" title="Facebook"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook"/></a>
@@ -1464,11 +1610,12 @@
         <ul>
           <p class="footer-col-note">Delivery</p>
           <li><a href="#" target="_blank" rel="noopener">Just Eat</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Glovo</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="https://glovoapp.com/es/es/alcala-de-henares-y-torrejon-de-ardoz/stores/cocina-farina-torrejon-de-ardoz" target="_blank" rel="noopener">Glovo</a></li>
+          <li><a href="https://www.ubereats.com/es/store/comida-casera-farina/7YvhnffSRq2cLpYiApEQMw" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="https://wa.me/659283678?text=Hola%20Do%C3%B1a%20Farina%2C%20quiero%20pedir%20por%20reparto%20propio%20a%20Torrej%C3%B3n" target="_blank" rel="noopener">Reparto Propio (Torrejón de Ardoz)</a></li>
           <p class="footer-col-note">Recogida</p>
           <li><a href="https://wa.me/659283678" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Too Good To Go</a></li>
+          <li><a href="https://share.toogoodtogo.com/item/128061831334672608/" target="_blank" rel="noopener">Too Good To Go</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1507,8 +1654,8 @@
     if (!hamburger.contains(e.target) && !drawer.contains(e.target)) closeDrawer();
   });
 
-  /* ── Menu tabs — 3 categorías ── */
-  const tabMap = { diarios:0, encargo:1, postres:2 };
+  /* ── Menu tabs — 4 categorías ── */
+  const tabMap = { diarios: 0, encargo: 1, postres: 2, menus: 3 };
   function switchTab(name) {
     document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
