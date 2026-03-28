@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doña Farina – Aviso Legal</title>
+  <meta name="description" content="Aviso legal y condiciones de uso de Doña Farina. Información sobre la titularidad, responsabilidades y política de privacidad."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+  <style>
+    /* ══════════════════════════════════════
+       VARIABLES & RESET (mismas que la web principal)
+    ══════════════════════════════════════ */
+    :root {
+      --gold:        #C9A84C;
+      --gold-light:  #F0D080;
+      --gold-pale:   #F7E8B0;
+      --black:       #0A0805;
+      --dark:        #130F08;
+      --dark2:       #1C1609;
+      --ember:       #E8420A;
+      --ember-soft:  #C45A1A;
+      --cream:       #F5EDD5;
+      --smoke:       #2A2010;
+      --nav-h:       70px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'EB Garamond', Georgia, serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .3;
+    }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    .decorative-border {
+      width: 100%; height: 5px;
+      background: repeating-linear-gradient(90deg,
+        var(--gold) 0 6px, transparent 6px 10px,
+        var(--gold-light) 10px 12px, transparent 12px 16px,
+        var(--ember) 16px 20px, transparent 20px 24px);
+    }
+
+    /* ══════════════════════════════════════
+       NAV (simplificado, solo logo y enlace a inicio)
+    ══════════════════════════════════════ */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem,5vw,3rem);
+      background: rgba(10,8,5,.97);
+      border-bottom: 1px solid rgba(201,168,76,.2);
+      backdrop-filter: blur(14px);
+    }
+    .nav-logo {
+      display: flex; align-items: center; text-decoration: none;   flex-direction: column; /* 🔥 clave */
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(.75rem,1.2vw,1rem);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--ember-soft));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-logo span {
+      display: block; font-size: .57rem; letter-spacing: .15em;
+      font-family: 'Cinzel', serif;
+      background: none; -webkit-text-fill-color: rgba(245,237,213,.48);
+    }
+    .nav-back {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 9px 18px;
+      background: linear-gradient(135deg, var(--gold), var(--ember-soft));
+      color: var(--black);
+      border-radius: 2px;
+      transition: opacity .3s, transform .2s;
+    }
+    .nav-back:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ══════════════════════════════════════
+       CONTENIDO LEGAL
+    ══════════════════════════════════════ */
+    .legal-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: clamp(1rem,5vw,3rem) clamp(1rem,5vw,2rem);
+      background: rgba(19,15,8,0.6);
+      border-radius: 4px;
+      border: 1px solid rgba(201,168,76,.15);
+    }
+    .legal-container h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem,4vw,2.8rem);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--gold);
+      padding-left: 1rem;
+    }
+    .legal-container h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin: 1.8rem 0 1rem 0;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .legal-container p, .legal-container li {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(245,237,213,.85);
+      margin-bottom: 1rem;
+    }
+    .legal-container ul, .legal-container ol {
+      margin: 0.5rem 0 1.2rem 1.8rem;
+    }
+    .legal-container li {
+      margin-bottom: 0.5rem;
+    }
+    .legal-container strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .legal-footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(201,168,76,.2);
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(245,237,213,.4);
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #050402;
+      border-top: 1px solid rgba(201,168,76,.13);
+      padding: clamp(1.2rem,4vw,2rem) clamp(1rem,5vw,3rem);
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-copy {
+      font-size: .68rem;
+      color: rgba(245,237,213,.2);
+      font-family: 'Cinzel', serif;
+      letter-spacing: .07em;
+    }
+    .footer-tagline-bottom {
+      font-size: .82rem;
+      font-style: italic;
+      color: rgba(201,168,76,.22);
+      margin-top: 0.4rem;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 860px) {
+      .legal-container h1 { font-size: 1.8rem; }
+      .legal-container h2 { font-size: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      :root { --nav-h: 60px; }
+      .legal-container { margin: 1rem; padding: 1.2rem; }
+      .legal-container h1 { font-size: 1.5rem; }
+      .legal-container h2 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░░ NAV ░░░ -->
+<nav>
+<a href="#inicio" class="nav-logo">
+    <div class="nav-logo-text">
+      Doña Farina
+      <span>Cocina Casera de Verdad</span>
+    </div>
+  </a>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="decorative-border"></div>
+
+<!-- ░░░ CONTENIDO LEGAL ░░░ -->
+<main class="legal-container">
+  <h1>Aviso Legal</h1>
+
+  <h2>1. DATOS IDENTIFICATIVOS</h2>
+  <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:</p>
+  <ul>
+    <li><strong>Titular:</strong> NAJAF MOHAMAD FARINA</li>
+    <li><strong>NIF:</strong> 04736659Q</li>
+    <li><strong>Domicilio comercial:</strong> C. de Minotauro, 106, 28850 Torrejón de Ardoz, Madrid, España.</li>
+    <li><strong>Actividad:</strong> Servicios de alimentación y restauración.</li>
+    <li><strong>Email de contacto:</strong> lacocinadefarina75@gmail.com</li>
+  </ul>
+
+  <h2>2. OBJETO Y CONTENIDO</h2>
+  <p>Este sitio web tiene un carácter meramente informativo y visual. Su función principal es mostrar el menú de productos y facilitar el acceso a plataformas externas para la gestión de pedidos y contacto directo.</p>
+
+  <h2>3. EXENCIÓN DE RESPONSABILIDAD POR ENLACES (LINKS)</h2>
+  <p>La página web contiene botones y enlaces que redirigen a servicios gestionados por terceros:</p>
+  <ul>
+    <li><strong>Plataformas de Delivery:</strong> El uso de enlaces a Uber Eats, Just Eat y Glovo implica que el usuario abandona este sitio web. La gestión de pedidos, pagos, precios y el servicio de reparto son responsabilidad exclusiva de dichas plataformas.</li>
+    <li><strong>WhatsApp:</strong> El enlace de contacto directo a través de WhatsApp se rige por las políticas de privacidad y condiciones de uso de dicha aplicación externa.</li>
+  </ul>
+  <p>El titular de esta web no asume responsabilidad alguna por los contenidos, disponibilidad técnica o el tratamiento de datos que realicen estos sitios ajenos.</p>
+
+  <h2>4. PROPIEDAD INTELECTUAL</h2>
+  <p>Todos los elementos contenidos en esta web (imágenes del menú, logotipos, textos y diseño) son propiedad intelectual de NAJAF MOHAMAD FARINA. Queda estrictamente prohibida su reproducción, distribución o comunicación pública con fines comerciales sin la autorización expresa del titular.</p>
+
+  <h2>5. PROTECCIÓN DE DATOS Y COOKIES</h2>
+  <p>Se informa al usuario que este sitio web no utiliza rastreadores (cookies de terceros) ni dispone de formularios de registro para la recogida de datos personales de forma directa. Al utilizar los enlaces de contacto externos, el usuario inicia una comunicación voluntaria bajo su propia responsabilidad.</p>
+
+  <h2>6. LEGISLACIÓN Y JURISDICCIÓN</h2>
+  <p>Para la resolución de cualquier controversia relacionada con este sitio web, será de aplicación la legislación española. Ambas partes se someten, con renuncia expresa a cualquier otro fuero, a los Juzgados y Tribunales de Torrejón de Ardoz (Madrid).</p>
+
+  <div class="legal-footer">
+    Última actualización: Marzo 2026
+  </div>
+</main>
+
+<div class="decorative-border"></div>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2025 Cocina Farina · Doña Farina · Todos los derechos reservados</div>
+    <div class="footer-tagline-bottom">Cocina española · Hecha en casa · Con todo el cariño</div>
+  </div>
+</footer>
+
+</body>
+</html>
