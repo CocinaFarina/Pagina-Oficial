@@ -25,6 +25,11 @@
       --smoke:       #2A2010;
       --nav-h:       70px;
       --tgtg:        #26BE6C;
+      /* ── Cocina Persa ── */
+      --persa:       #3D9B8A;
+      --persa-light: #62C4B0;
+      --persa-pale:  #9FE0D3;
+      --persa-dark:  #1E4D44;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -337,6 +342,24 @@
       font-weight: 700; line-height: 1.4;
     }
 
+    /* ── Badge especial para la pestaña Cocina Persa ── */
+    .menu-tab.tab-persa { position: relative; }
+    .menu-tab.tab-persa .tab-badge-persa {
+      display: inline-block; margin-left: .35rem;
+      font-size: .44rem; letter-spacing: .05em; padding: 1px 6px;
+      background: linear-gradient(135deg, var(--persa), var(--persa-dark));
+      color: #fff; border-radius: 20px; vertical-align: middle;
+      font-weight: 700; line-height: 1.4; border: 1px solid rgba(98,196,176,.4);
+    }
+    .menu-tab.tab-persa.active {
+      background: linear-gradient(135deg, rgba(61,155,138,.18), rgba(30,77,68,.12));
+      color: var(--persa-pale);
+    }
+    .menu-tab.tab-persa:hover:not(.active) {
+      color: var(--persa-light);
+      background: rgba(61,155,138,.06);
+    }
+
     .menu-panel { display: none; }
     .menu-panel.active { display: block; }
 
@@ -363,6 +386,75 @@
     .encargo-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(37,211,102,.4); }
     .encargo-wa-btn img { width: 1rem; height: 1rem; object-fit: contain; filter: brightness(0) invert(1); }
 
+    /* ── Aviso Cocina Persa ── */
+    .persa-notice {
+      max-width: 1200px; margin: 0 auto clamp(.8rem,2vw,1.6rem);
+      padding: clamp(1rem,2.5vw,1.5rem) clamp(1rem,3vw,2rem);
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(61,155,138,.07), rgba(30,77,68,.06));
+      border: 1px solid rgba(61,155,138,.28);
+      border-radius: 4px; position: relative; overflow: hidden;
+    }
+    .persa-notice::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(
+        60deg,
+        transparent 0, transparent 14px,
+        rgba(61,155,138,.025) 14px, rgba(61,155,138,.025) 16px
+      );
+    }
+    .persa-notice-icon {
+      font-size: 2rem; flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(98,196,176,.4));
+    }
+    .persa-notice-body { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+    .persa-notice-title {
+      font-family: 'Cinzel', serif; font-size: .76rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--persa-pale); margin-bottom: .28rem;
+    }
+    .persa-notice-subtitle {
+      font-family: 'Cinzel Decorative', serif; font-size: .62rem;
+      color: var(--persa-light); opacity: .7; letter-spacing: .05em; margin-bottom: .35rem;
+    }
+    .persa-notice-text {
+      font-size: clamp(.8rem,1.1vw,.88rem); color: rgba(245,237,213,.48); font-style: italic;
+      line-height: 1.6;
+    }
+    .persa-wa-btn {
+      display: inline-flex; align-items: center; gap: .5rem; padding: 10px 20px;
+      background: linear-gradient(135deg, var(--persa), var(--persa-dark));
+      color: #fff; border-radius: 4px;
+      font-family: 'Cinzel', serif; font-size: .64rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; text-decoration: none; flex-shrink: 0;
+      transition: transform .2s, box-shadow .3s;
+      box-shadow: 0 4px 16px rgba(61,155,138,.3);
+      border: 1px solid rgba(98,196,176,.3); position: relative; z-index: 1;
+    }
+    .persa-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,155,138,.45); }
+    .persa-wa-btn img { width: 1rem; height: 1rem; object-fit: contain; filter: brightness(0) invert(1); }
+
+    /* Badge en las tarjetas persas 
+    .badge-persa {
+      background: linear-gradient(135deg, var(--persa), var(--persa-dark)) !important;
+      color: #fff !important;
+      border: 1px solid rgba(98,196,176,.35);
+    }
+    .menu-card.menu-persa {
+      border-color: rgba(61,155,138,.13);
+      background: linear-gradient(145deg,#0d1b18,#142622);
+    }
+    .menu-card.menu-persa:hover {
+      border-color: rgba(61,155,138,.35);
+      box-shadow: 0 12px 32px rgba(0,0,0,.48), 0 0 0 1px rgba(61,155,138,.12);
+    }
+    .menu-card.menu-persa .menu-card-name { color: var(--persa-pale); }
+    .menu-card.menu-persa .menu-card-price { color: var(--persa-light); }
+    .menu-card.menu-persa .menu-card-tag {
+      border-color: rgba(61,155,138,.3);
+      color: rgba(98,196,176,.65);
+    }
+*/
     .menu-carousel-outer { position: relative; max-width: 1200px; margin: 0 auto; }
     .menu-carousel-outer::before,
     .menu-carousel-outer::after { content: ''; pointer-events: none; position: absolute; top: 0; bottom: 1rem; width: 40px; z-index: 2; }
@@ -405,6 +497,10 @@
     .menu-card-img-wrap.no-img::after {
       content: attr(data-emoji); font-size: 2.8rem;
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    }
+    /* Fondo especial para cards persas cuando no carga imagen */
+    .menu-card.menu-persa .menu-card-img-wrap {
+      background: linear-gradient(135deg,#0d1b18,#142622);
     }
 
     .menu-card-badge {
@@ -637,6 +733,7 @@
       .contacto-grid { grid-template-columns:1fr; }
       .menu-card { flex:0 0 clamp(230px,75vw,290px); }
       .encargo-notice { flex-direction:column; align-items:flex-start; }
+      .persa-notice { flex-direction:column; align-items:flex-start; }
     }
 
     /* ══════════════════════════════════════
@@ -870,13 +967,16 @@
     <div class="section-divider"><span>✦</span></div>
   </div>
 
-  <!-- ══ 4 PESTAÑAS ══ -->
+  <!-- ══ 5 PESTAÑAS ══ -->
   <div class="menu-tabs">
     <button class="menu-tab active"  onclick="switchTab('diarios')">Platos Diarios</button>
     <button class="menu-tab"         onclick="switchTab('encargo')">Platos por Encargo</button>
     <button class="menu-tab"         onclick="switchTab('postres')">Postres</button>
     <button class="menu-tab tab-menus" onclick="switchTab('menus')">
       Menús <span class="tab-badge">OFERTA</span>
+    </button>
+    <button class="menu-tab tab-persa" onclick="switchTab('persa')">
+      Cocina Persa <span class="tab-badge-persa">🌿 NUEVA</span>
     </button>
   </div>
 
@@ -1329,6 +1429,289 @@
     <p class="carousel-hint">← Desliza para ver más →</p>
   </div>
 
+  <!-- ══════════════════════════════════════
+       COCINA PERSA
+  ══════════════════════════════════════ -->
+  <div id="tab-persa" class="menu-panel">
+
+<!-- Aviso de origen persa -->
+<div class="encargo-notice">
+  <span class="encargo-notice-icon">🕌</span>
+  <div class="encargo-notice-body">
+    <p class="encargo-notice-title">Cocina Persa · Las Raíces de Farina</p>
+    <p class="encargo-notice-text">
+      Recetas transmitidas de generación en generación, elaboradas con especias y técnicas de la tierra natal de Farina. 
+      Arroces perfumados con azafrán, carnes a la brasa, pastas caseras y dulces artesanos que guardan la memoria de un hogar lejano. 
+      Consulta disponibilidad diaria por WhatsApp.
+    </p>
+  </div>
+  <a href="https://wa.me/659283678?text=Hola%20Do%C3%B1a%20Farina%2C%20me%20interesan%20los%20platos%20persas%20%F0%9F%8C%BF"
+     class="encargo-wa-btn" target="_blank" rel="noopener">
+    <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp"/>
+    Consultar disponibilidad
+  </a>
+</div>
+
+    <div class="menu-carousel-outer">
+      <button class="carousel-btn prev" onclick="scrollCarousel('tab-persa',-1)">&#8592;</button>
+      <button class="carousel-btn next" onclick="scrollCarousel('tab-persa',1)">&#8594;</button>
+      <div class="menu-grid">
+
+        <!-- 1. Qabli Polo -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍚">
+            <img src="alimentos/platos persa/Qabli polo_ aroz basmati con carne de ternera ,zanahoria frita y frutos secos_1 ración 500gr 15,90.png"
+                 alt="Qabli Polo"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">⭐ Plato Nacional</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Qabli Polo</div>
+            <div class="menu-card-desc">El arroz basmati perfumado con ternera tierna, zanahoria frita y frutos secos. El plato nacional afgano-persa por excelencia, cocinado con la receta de la familia de Farina.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">15,90€</span><span class="menu-card-tag">500 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 2. Cholo Kebab de Ternera -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍢">
+            <img src="alimentos/platos persa/Cholo kebab, Aroz basmati con azafrán y brochetas de carne ternera y tomate asados 1 ración 17,90.png"
+                 alt="Cholo Kebab de Ternera"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🔥 Más Pedido</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Cholo Kebab de Ternera</div>
+            <div class="menu-card-desc">Arroz basmati dorado con azafrán acompañado de jugosas brochetas de ternera y tomate asados a la brasa. Una combinación que no se olvida.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">17,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
+
+        <!-- 3. Cholo Kebab de Pollo -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍢">
+            <img src="alimentos/platos persa/Cholo kebab de pollo_arroz basmati con brochetas de pollo 1 Ración 16,90.png"
+                 alt="Cholo Kebab de Pollo"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Cholo Kebab de Pollo</div>
+            <div class="menu-card-desc">Arroz basmati perfumado con azafrán y brochetas de pollo marinado a la brasa. Sabor limpio, especiado y reconfortante. Ligero pero lleno de personalidad.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">16,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
+
+        <!-- 4. Qorma Sabsi -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🥘">
+            <img src="alimentos/platos persa/Qorma sabsi, hierbas naturales, con alubias y carne ternera  acompañado de ardoz basmati 1RACION 500gr 18€.png"
+                 alt="Qorma Sabsi"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🌿 Tradicional</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Qorma Sabsi</div>
+            <div class="menu-card-desc">Estofado persa de hierbas naturales frescas (espinacas, cilantro, perejil) con alubias y ternera, servido sobre arroz basmati. Profundo, aromático y nutritivo.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">18,00€</span><span class="menu-card-tag">500 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 5. Zereshk Polo -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍚">
+            <img src="alimentos/platos persa/Zereshk polo_ aroz basmati con azafrán y semillas de Granada,acompañado de arroz basmati 1 ración 500gr 16€.png"
+                 alt="Zereshk Polo"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">✦ Persa Clásico</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Zereshk Polo</div>
+            <div class="menu-card-desc">Arroz basmati perfumado con azafrán y semillas de granada (berberechos), de intenso color rojizo. Dulce, ácido y aromático a la vez. Un clásico de la mesa persa.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">16,00€</span><span class="menu-card-tag">500 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 6. Kufta Cholo -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍲">
+            <img src="alimentos/platos persa/Kufta cholo _ aroz basmati, acompañado de albóndigas1racion 16,90€.png"
+                 alt="Kufta Cholo"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Kufta Cholo</div>
+            <div class="menu-card-desc">Arroz basmati con azafrán acompañado de albóndigas persas especiadas, elaboradas con carne, hierbas y especias tradicionales. Un plato completo y reconfortante.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">16,90€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
+
+        <!-- 7. Kebab Bara -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍢">
+            <img src="alimentos/platos persa/Kebab bara_ brochetas de carne de Cordero a la braza 1RACION 4 brochetas cada brochetas 6 trozos 20€.png"
+                 alt="Kebab Bara"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🔥 A la Brasa</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Kebab Bara</div>
+            <div class="menu-card-desc">Cuatro brochetas de cordero a la braza, con la carne tierna y ahumada. Cada brocheta lleva seis trozos jugosos con especias persas. Un festín de sabores intensos.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">20,00€</span><span class="menu-card-tag">4 Brochetas</span></div>
+          </div>
+        </div>
+
+        <!-- 8. Mantu -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🥟">
+            <img src="alimentos/platos persa/Mantu_ carne picada con especies, cebolla, relleno de pasta casera acompañado de yogur natural 1 ración 6 uni 8,90€.png"
+                 alt="Mantu"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">✦ Artesano</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Mantu</div>
+            <div class="menu-card-desc">Pasta casera rellena de carne picada especiada con cebolla, cocinada al vapor y servida sobre yogur natural. El dumpling persa por excelencia: delicado y lleno de matices.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">6 Unidades</span></div>
+          </div>
+        </div>
+
+        <!-- 9. Bulani -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🫓">
+            <img src="alimentos/platos persa/Bulani_ masa madre relleno de verduras, acompañado con yogur natural 1 ración 2 uni 9,90€.png"
+                 alt="Bulani"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Bulani</div>
+            <div class="menu-card-desc">Masa madre fina rellena de verduras frescas, cocinada a la plancha hasta quedar crujiente. Acompañada de yogur natural frío. Un entrante persa que enamora al primer bocado.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">9,90€</span><span class="menu-card-tag">2 Unidades</span></div>
+          </div>
+        </div>
+
+        <!-- 10. Kotlet -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🥩">
+            <img src="alimentos/platos persa/Kotlet ,carne picada con verduras y cebolla 1 ración 6 uni 8,90 €.png"
+                 alt="Kotlet"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Kotlet</div>
+            <div class="menu-card-desc">Medallones de carne picada mezclada con verduras y cebolla, fritos en aceite hasta dorarse por fuera. Tiernos por dentro y llenos de sabor. Seis unidades por ración.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">6 Unidades</span></div>
+          </div>
+        </div>
+
+        <!-- 11. Cucu Sabsi -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🥬">
+            <img src="alimentos/platos persa/Cucu sabsi_ tortilla de espinacas con más hierbas naturales y nueces 26cm 8,90€.png"
+                 alt="Cucu Sabsi"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🌿 Vegetariano</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Cucu Sabsi</div>
+            <div class="menu-card-desc">Tortilla persa de espinacas con eneldo, cebolleta, perejil y nueces. Una receta ancestral de color verde intenso y aroma inconfundible. Diferente a cualquier tortilla que hayas probado.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">26 cm</span></div>
+          </div>
+        </div>
+
+        <!-- 12. Burani Badenjan -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍆">
+            <img src="alimentos/platos persa/BURANI badenjan _veraniegas fritas con tomate yogur natural_1 ración 6,50€.png"
+                 alt="Burani Badenjan"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🌿 Vegetariano</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Burani Badenjan</div>
+            <div class="menu-card-desc">Berenjenas fritas con tomate natural y una generosa capa de yogur natural frío. Un contraste de temperaturas, texturas y sabores único. Sencillo, saludable y delicioso.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">6,50€</span><span class="menu-card-tag">1 Ración</span></div>
+          </div>
+        </div>
+
+        <!-- 13. Bamia -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🫑">
+            <img src="alimentos/platos persa/Bamia, verdura saludable con salsa de tomate natural, y ajo 1 ración 500gr 8,90.png"
+                 alt="Bamia"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🌿 Vegetariano</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Bamia</div>
+            <div class="menu-card-desc">Ocra tierna cocinada lentamente en salsa de tomate natural con ajo y especias persas. Un guiso vegetal reconfortante, saludable y aromático con mucho sabor mediterráneo-oriental.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">500 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 14. Sola Gorbandi -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍚">
+            <img src="alimentos/platos persa/Sola gorbandi ,Aroz redondo con soja acompañado de yogur natural y salsa de tomate y menta 1 ración de 500g 8,90€.png"
+                 alt="Sola Gorbandi"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Sola Gorbandi</div>
+            <div class="menu-card-desc">Arroz redondo con soja acompañado de yogur natural, salsa de tomate fresco y menta fresca. Un plato equilibrado, suave y refrescante. Perfecto para quienes buscan algo ligero y diferente.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">8,90€</span><span class="menu-card-tag">500 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 15. Pan Casero de Persia -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🫓">
+            <img src="alimentos/platos persa/Pan casero de persia ,1 uni 30×10 cm 4,90€.png"
+                 alt="Pan Casero de Persia"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Pan Casero de Persia</div>
+            <div class="menu-card-desc">Pan plano artesanal elaborado con la receta tradicional persa de Farina. Suave, ligeramente crujiente y fragante. Perfecto para acompañar cualquier plato persa o tomar solo.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">4,90€</span><span class="menu-card-tag">30 × 10 cm</span></div>
+          </div>
+        </div>
+
+        <!-- 16. Baklawa con Pistacho y Pétalos de Rosa -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍰">
+            <img src="alimentos/platos persa/Baklawa con pistacho y pétalos de rosas comestibles 100gr 3,90€.png"
+                 alt="Baklawa con Pistacho y Pétalos de Rosa"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🌹 Repostería Persa</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Baklawa con Pistacho y Pétalos de Rosa</div>
+            <div class="menu-card-desc">Capas crujientes de masa filo rellenas de pistacho molido, perfumadas con agua de rosas y decoradas con pétalos comestibles. Un dulce delicado y elegante de la repostería persa artesanal.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">3,90€</span><span class="menu-card-tag">100 gr</span></div>
+          </div>
+        </div>
+
+        <!-- 17. Baklawa con Miel Natural -->
+        <div class="menu-card menu-persa">
+          <div class="menu-card-img-wrap" data-emoji="🍯">
+            <img src="alimentos/platos persa/baklawa_relleno de pistacho y tiene miel natural encima.png"
+                 alt="Baklawa con Miel Natural"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="menu-card-badge badge-persa">🍯 Dulce Artesano</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Baklawa con Miel Natural</div>
+            <div class="menu-card-desc">Baklawa de pistacho bañado en miel natural pura, sin aditivos. La miel crea una capa brillante y aromática sobre cada capa crujiente. Irresistible y genuino, como en Persia.</div>
+            <div class="menu-card-footer"><span class="menu-card-price">3,90€</span><span class="menu-card-tag">100 gr</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+  <!-- ══ FIN COCINA PERSA ══ -->
+
 </section>
 
 <div class="decorative-border"></div>
@@ -1568,7 +1951,7 @@
           title="Mapa Doña Farina – C. de Minotauro 106, Torrejón de Ardoz">
         </iframe>
       </div>
-      <a href="https://maps.app.goo.gl/PfSsAgtZe5zCs8N59"
+      <a href="https://maps.app.goo.gl/HMkGqEaYxRokiQGg7"
          class="map-open-link" target="_blank" rel="noopener">
         🗺️ &nbsp; Abrir en Google Maps · C. de Minotauro 106
       </a>
@@ -1651,8 +2034,8 @@
     if (!hamburger.contains(e.target) && !drawer.contains(e.target)) closeDrawer();
   });
 
-  /* ── Menu tabs — 4 categorías ── */
-  const tabMap = { diarios: 0, encargo: 1, postres: 2, menus: 3 };
+  /* ── Menu tabs — 5 categorías ── */
+  const tabMap = { diarios: 0, encargo: 1, postres: 2, menus: 3, persa: 4 };
   function switchTab(name) {
     document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
