@@ -971,7 +971,7 @@
   <div class="menu-tabs">
     <button class="menu-tab active"  onclick="switchTab('diarios')">Platos Diarios</button>
     <button class="menu-tab"         onclick="switchTab('encargo')">Platos por Encargo</button>
-    <button class="menu-tab"         onclick="switchTab('postres')">Postres</button>
+    <button class="menu-tab"         onclick="switchTab('postres')">TARTAS</button>
     <button class="menu-tab tab-menus" onclick="switchTab('menus')">
       Menús <span class="tab-badge">OFERTA</span>
     </button>
@@ -1281,31 +1281,892 @@
   <!-- ══════════════════════════
        POSTRES
   ══════════════════════════ -->
-  <div id="tab-postres" class="menu-panel">
+
+<div id="tab-postres" class="menu-panel">
+
+  <style>
+    /* Estilos específicos para la sección de postres */
+    .postres-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(.8rem, 3vw, 1.8rem) 2rem;
+    }
+    /* Bloque informativo de tartas */
+    .tartas-block {
+      background: linear-gradient(145deg, #1e1609, #2a1e0a);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .tartas-top {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+    }
+    .tartas-divider-v {
+      background: linear-gradient(180deg, transparent, rgba(201, 168, 76, 0.2) 20%, rgba(201, 168, 76, 0.2) 80%, transparent);
+    }
+    .tartas-col {
+      padding: 2rem 2.2rem;
+    }
+    .tartas-col-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .tartas-col-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent);
+    }
+    .rellenos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.38rem 0.6rem;
+    }
+    .relleno-item {
+      font-size: 0.78rem;
+      color: rgba(245, 237, 213, 0.72);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      line-height: 1.4;
+      padding: 0.25rem 0.4rem;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 3px;
+      background: rgba(201, 168, 76, 0.03);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .relleno-item:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      background: rgba(201, 168, 76, 0.07);
+    }
+    .relleno-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    .precios-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .precios-table tr {
+      border-bottom: 1px solid rgba(201, 168, 76, 0.07);
+    }
+    .precios-table tr:last-child {
+      border-bottom: none;
+    }
+    .precios-table td {
+      padding: 0.62rem 0;
+      font-size: 0.83rem;
+      vertical-align: middle;
+      word-break: break-word;
+    }
+    .precio-info {
+      color: rgba(245, 237, 213, 0.68);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .precio-size {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--gold-light);
+    }
+    .precio-personas {
+      font-size: 0.72rem;
+      color: rgba(245, 237, 213, 0.38);
+      margin-left: 0.2rem;
+    }
+    .precio-valor {
+      text-align: right;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .precio-tag-especial {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: rgba(232, 66, 10, 0.15);
+      color: var(--ember);
+      border: 1px solid rgba(232, 66, 10, 0.25);
+      vertical-align: middle;
+      margin-left: 0.35rem;
+    }
+    .tartas-footer {
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 1.1rem 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: rgba(201, 168, 76, 0.03);
+    }
+    .tartas-footer-text {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: rgba(245, 237, 213, 0.4);
+      line-height: 1.55;
+    }
+    .tartas-footer-text strong {
+      color: rgba(245, 237, 213, 0.62);
+      font-style: normal;
+    }
+    .tartas-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 9px 20px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.22);
+    }
+    .tartas-wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.38);
+    }
+    .tartas-wa-btn img {
+      width: 1rem;
+      height: 1rem;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    .otros-postres-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.38);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    /* Responsive del bloque tartas */
+    @media (max-width: 700px) {
+      .tartas-top {
+        grid-template-columns: 1fr;
+      }
+      .tartas-divider-v {
+        display: none;
+      }
+      .tartas-col {
+        padding: 1.5rem 1.3rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .tartas-col {
+        padding: 1.2rem 1rem;
+      }
+      .rellenos-grid {
+        grid-template-columns: 1fr;
+      }
+      .precios-table td {
+        padding: 0.45rem 0;
+      }
+      .precio-valor {
+        white-space: normal;
+        text-align: left;
+        padding-left: 1rem;
+      }
+      .tartas-footer {
+        padding: 1rem 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .tartas-wa-btn {
+        align-self: stretch;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <div class="postres-wrap">
+
+    <!-- ══ Bloque informativo de tartas ══ -->
+    <div class="tartas-block">
+      <div class="tartas-top">
+        <div class="tartas-col">
+          <p class="tartas-col-title">Rellenos disponibles</p>
+          <div class="rellenos-grid">
+            <div class="relleno-item"><span class="relleno-dot"></span>Nata y fresa</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Nata sola</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Chocolate solo</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Nata y chocolate</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Crema pistacho</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Crema nueces</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Chocoflan</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Crema pastelera</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Naranja &amp; chocolate</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Dulce de leche</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Crema caramelo</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Nocilla</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Chocolate Dubai</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Chocolate blanco</div>
+            <div class="relleno-item"><span class="relleno-dot"></span>Coco</div>
+          </div>
+        </div>
+        <div class="tartas-divider-v"></div>
+        <div class="tartas-col">
+          <p class="tartas-col-title">Medidas y precios</p>
+          <table class="precios-table">
+             <tr><td class="precio-info"><span class="precio-size">20 cm</span><span class="precio-personas">· hasta 10 personas</span></td><td class="precio-valor">30 €</td></tr>
+             <tr><td class="precio-info"><span class="precio-size">24 cm</span><span class="precio-personas">· hasta 15 personas</span></td><td class="precio-valor">35 €</td></tr>
+             <tr><td class="precio-info"><span class="precio-size">26 cm</span><span class="precio-personas">· hasta 20 personas</span></td><td class="precio-valor">40 €</td></tr>
+             <tr><td class="precio-info"><span class="precio-size">28 cm</span><span class="precio-personas">· hasta 25 personas</span></td><td class="precio-valor">45 €</td></tr>
+             <tr><td class="precio-info"><span class="precio-size">30 cm</span><span class="precio-personas">· hasta 30 personas</span></td><td class="precio-valor">50 €</td></tr>
+             <tr><td class="precio-info"><span class="precio-size">Brazo gitano</span><span class="precio-personas">· 30 cm</span><span class="precio-tag-especial">Especial</span></td><td class="precio-valor">20 €</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="tartas-footer">
+        <p class="tartas-footer-text">Elaboración 100% artesanal con <strong>ingredientes naturales</strong>.<br/>Personaliza relleno y medidas a tu gusto, <strong>SOLO POR ENCARGO</strong>.</p>
+        <a href="https://wa.me/659283678?text=Hola%20Do%C3%B1a%20Farina%2C%20quiero%20encargar%20una%20tarta%20%F0%9F%8E%82" class="tartas-wa-btn" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp"/> Encargar mi tarta</a>
+      </div>
+    </div>
+
+    <!-- ══ Carrusel horizontal de otros postres (igual que el resto del menú) ══ -->
+    <p class="otros-postres-label">— También en carta —</p>
     <div class="menu-carousel-outer">
       <button class="carousel-btn prev" onclick="scrollCarousel('tab-postres',-1)">&#8592;</button>
       <button class="carousel-btn next" onclick="scrollCarousel('tab-postres',1)">&#8594;</button>
       <div class="menu-grid">
 
-        <!-- Flan Casero -->
-        <div class="menu-card">
-          <div class="menu-card-img-wrap" data-emoji="🍮">
-            <img src="fotos/foto-flan.jpg" alt="Flan Casero"
-                 onerror="this.parentElement.classList.add('no-img')"/>
-          </div>
-          <div class="menu-card-badge">🔥 Favorito</div>
-          <div class="menu-card-body">
-            <div class="menu-card-name">Verifique en local</div>
-            <div class="menu-card-desc">Verifique en local</div>
-            <div class="menu-card-footer"><span class="menu-card-price">***€</span><span class="menu-card-tag">Unidad</span></div>
-          </div>
-        </div>
 
+<!-- Cheesecake de Frutos Rojos -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/CHEESECAKE DE FRUTOS ROJOS.png" alt="Cheesecake de Frutos Rojos" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Cheesecake de Frutos Rojos</div>
+    <div class="menu-card-desc">Base crujiente, crema de queso y coulis de frutos rojos. Un clásico irresistible.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Chocoflan -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/CHOCOFLAN.png" alt="Chocoflan" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Chocoflan</div>
+    <div class="menu-card-desc">La combinación perfecta de bizcocho de chocolate y flan de vainilla con caramelo.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Cupcake de Chocolate y Fresa -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🧁">
+    <img src="alimentos/postres/CUPCAKE DE CHOCOLATE Y FRESA.png" alt="Cupcake de Chocolate y Fresa" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Cupcake de Chocolate y Fresa</div>
+    <div class="menu-card-desc">Bizcocho de chocolate con corazón de fresa y buttercream.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Cupcake Red Velvet -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🧁">
+    <img src="alimentos/postres/CUPCAKE RED VELVET.png" alt="Cupcake Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Cupcake Red Velvet</div>
+    <div class="menu-card-desc">Suave bizcocho rojo con toques de cacao y frosting de queso crema.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Cupkes de Fresa y Vainilla -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🧁">
+    <img src="alimentos/postres/CUPKES DE FRESA Y VAINILLA.png" alt="Cupkes de Fresa y Vainilla" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Cupkes de Fresa y Vainilla</div>
+    <div class="menu-card-desc">Dos sabores en una presentación delicada. Ideal para regalar.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Dulce de Leche -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍮">
+    <img src="alimentos/postres/DULCE DE LECHE.png" alt="Dulce de Leche" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Dulce de Leche</div>
+    <div class="menu-card-desc">Postre cremoso de leche caramelizada. Un clásico argentino.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- New York Cheesecake -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/NEW YORK CHEESECAKE.png" alt="New York Cheesecake" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">New York Cheesecake</div>
+    <div class="menu-card-desc">La auténtica tarta de queso neoyorquina, cremosa y con base de galleta.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Red Velvet -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/RED VELVET .png" alt="Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Red Velvet</div>
+    <div class="menu-card-desc">Bizcocho rojo aterciopelado con frosting de queso crema.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Strawberry Jelly Cake -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍓">
+    <img src="alimentos/postres/STRAWBERRY JELLY CAKE.png" alt="Strawberry Jelly Cake" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Strawberry Jelly Cake</div>
+    <div class="menu-card-desc">Tarta de gelatina de fresa con bizcocho y fruta fresca. Refrescante y colorida.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Swiss Roll Fresa -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/SWISS ROLL FRESA .png" alt="Swiss Roll Fresa" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Swiss Roll Fresa</div>
+    <div class="menu-card-desc">Brazo de gitano relleno de crema y fresas naturales.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Swiss Roll Nata -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/SWISS ROLL NATA.png" alt="Swiss Roll Nata" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Swiss Roll Nata</div>
+    <div class="menu-card-desc">Brazo de gitano esponjoso relleno de nata montada.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Swiss Roll Red Velvet -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/SWISS ROLL RED VELVET.png" alt="Swiss Roll Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Swiss Roll Red Velvet</div>
+    <div class="menu-card-desc">Brazo de gitano red velvet con frosting de queso crema.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Swiss Roll Tropical -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍍">
+    <img src="alimentos/postres/SWISS ROLL TROPICAL.png" alt="Swiss Roll Tropical" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Swiss Roll Tropical</div>
+    <div class="menu-card-desc">Brazo de gitano con relleno de piña, coco y frutas tropicales.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Banoffee -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍌">
+    <img src="alimentos/postres/TARTA BANOFFE.png" alt="Tarta Banoffee" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Banoffee</div>
+    <div class="menu-card-desc">Base de galleta, dulce de leche, plátano y nata. Una delicia británica.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Chocolate Layer -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA CHOCOLATE LAYER.png" alt="Tarta Chocolate Layer" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Chocolate Layer</div>
+    <div class="menu-card-desc">Capas de bizcocho de chocolate con ganache y cobertura.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Celebración -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🎂">
+    <img src="alimentos/postres/TARTA DE CELEBRACION.png" alt="Tarta de Celebración" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-badge">🎉 Especial</div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Celebración</div>
+    <div class="menu-card-desc">Diseños personalizados para cumpleaños, bodas y eventos.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Chocolate -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA DE CHOCOLATE.png" alt="Tarta de Chocolate" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Chocolate</div>
+    <div class="menu-card-desc">Bizcocho de chocolate intenso con cobertura de chocolate negro.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Chocolate y Naranja -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍊">
+    <img src="alimentos/postres/TARTA DE CHOCOLATE Y NARANJA.png" alt="Tarta de Chocolate y Naranja" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Chocolate y Naranja</div>
+    <div class="menu-card-desc">La combinación cítrica del chocolate con naranja.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Coco -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🥥">
+    <img src="alimentos/postres/TARTA DE COCO.png" alt="Tarta de Coco" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Coco</div>
+    <div class="menu-card-desc">Bizcocho esponjoso con coco rallado y crema de coco.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Dulces -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍬">
+    <img src="alimentos/postres/TARTA DE DULCES .png" alt="Tarta de Dulces" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Dulces</div>
+    <div class="menu-card-desc">Tarta decorada con caramelos y chocolates. Perfecta para niños.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Frutas -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍓">
+    <img src="alimentos/postres/TARTA DE FRUTAS.png" alt="Tarta de Frutas" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Frutas</div>
+    <div class="menu-card-desc">Bizcocho suave con crema pastelera y fruta fresca de temporada.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Glaseado Espejo -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="✨">
+    <img src="alimentos/postres/TARTA DE GLASEADO ESPEJO.png" alt="Tarta de Glaseado Espejo" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Glaseado Espejo</div>
+    <div class="menu-card-desc">Elegante tarta con acabado brillante efecto espejo. Para ocasiones especiales.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Manzana -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍎">
+    <img src="alimentos/postres/TARTA DE MANZANA.png" alt="Tarta de Manzana" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Manzana</div>
+    <div class="menu-card-desc">Clásica tarta de manzana con canela y masa quebrada.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Moca -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="☕">
+    <img src="alimentos/postres/TARTA DE MOCA.png" alt="Tarta de Moca" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Moca</div>
+    <div class="menu-card-desc">Bizcocho de café con crema de mantequilla y toques de chocolate.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Tres Chocolates -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA DE TRES CHOCOLATES.png" alt="Tarta de Tres Chocolates" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Tres Chocolates</div>
+    <div class="menu-card-desc">Capas de chocolate blanco, con leche y negro. Cremosa y elegante.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Devils Food -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA DEVILS FOOD.png" alt="Tarta Devils Food" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Devils Food</div>
+    <div class="menu-card-desc">Bizcocho de chocolate intenso con cobertura de chocolate. Muy húmeda.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta de Zanahoria -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🥕">
+    <img src="alimentos/postres/TARTA DE ZANAHORIA.png" alt="Tarta de Zanahoria" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta de Zanahoria</div>
+    <div class="menu-card-desc">Bizcocho especiado con zanahoria rallada, nueces y frosting de queso.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Drip de Chocolate y Fresa -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍓">
+    <img src="alimentos/postres/TARTA DRIP DE CHOLATE Y FRESA.png" alt="Tarta Drip de Chocolate y Fresa" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Drip de Chocolate y Fresa</div>
+    <div class="menu-card-desc">Efecto drip de chocolate con fresas frescas en la parte superior.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Dulce de Leche -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍮">
+    <img src="alimentos/postres/TARTA DULCE DE LECHE.png" alt="Tarta Dulce de Leche" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Dulce de Leche</div>
+    <div class="menu-card-desc">Bizcocho empapado en dulce de leche y cubierto con merengue.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Ferrero Rocher -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA FERRERO ROCHER.png" alt="Tarta Ferrero Rocher" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Ferrero Rocher</div>
+    <div class="menu-card-desc">Inspirada en el famoso bombón, con avellanas y chocolate.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Hojaldre y Frutas -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍓">
+    <img src="alimentos/postres/TARTA HOJAIDRE Y FRUTAS.png" alt="Tarta Hojaldre y Frutas" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Hojaldre y Frutas</div>
+    <div class="menu-card-desc">Base de hojaldre crujiente, crema pastelera y fruta fresca.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Kinder Bueno -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA KINDER BUENO.png" alt="Tarta Kinder Bueno" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Kinder Bueno</div>
+    <div class="menu-card-desc">Bizcocho de chocolate con crema de avellanas y trozos de Kinder.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Kit Kat y M&M's -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍬">
+    <img src="alimentos/postres/TARTA KIT KAT Y M&M'S.png" alt="Tarta Kit Kat y M&M's" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Kit Kat y M&M's</div>
+    <div class="menu-card-desc">Tarta decorada con barritas Kit Kat y M&M's. Muy divertida.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tartaleta de Frutas -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍓">
+    <img src="alimentos/postres/TARTALETA DE FRUTAS.png" alt="Tartaleta de Frutas" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tartaleta de Frutas</div>
+    <div class="menu-card-desc">Masa quebrada con crema pastelera y frutas variadas.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tartaleta de Frutas Frescas -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍊">
+    <img src="alimentos/postres/TARTALETA DE FRUTAS FRESCAS.png" alt="Tartaleta de Frutas Frescas" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tartaleta de Frutas Frescas</div>
+    <div class="menu-card-desc">Versión aún más colorida con frutas de temporada.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Medovik -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍯">
+    <img src="alimentos/postres/TARTA MEDOVIK.png" alt="Tarta Medovik" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Medovik</div>
+    <div class="menu-card-desc">Tarta de miel rusa con capas finas de bizcocho y crema agria.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Mousse de Chocolate -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA MOUSSE DE CHOCOLATE.png" alt="Tarta Mousse de Chocolate" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Mousse de Chocolate</div>
+    <div class="menu-card-desc">Aireada y suave, con base de bizcocho y cobertura de chocolate.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Mousse de Chocolate (segunda) -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA MOUSSE DE CHOCOLATE .png" alt="Tarta Mousse de Chocolate" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Mousse de Chocolate</div>
+    <div class="menu-card-desc">Otra versión con decoración especial.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Naked de Frutos Rojos -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/TARTA NAKED DE FRUTOS ROJOS.png" alt="Tarta Naked de Frutos Rojos" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Naked de Frutos Rojos</div>
+    <div class="menu-card-desc">Estilo rústico con capas de bizcocho y frutos rojos.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Neapolitana -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍫">
+    <img src="alimentos/postres/TARTA NEAPOLITANA.png" alt="Tarta Neapolitana" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Neapolitana</div>
+    <div class="menu-card-desc">Capas de chocolate, vainilla y fresa. Inspirada en el helado napolitano.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Oreo Cheesecake -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍪">
+    <img src="alimentos/postres/TARTA OREO CHEESECAKE.png" alt="Tarta Oreo Cheesecake" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Oreo Cheesecake</div>
+    <div class="menu-card-desc">Base y trozos de galleta Oreo con crema de queso.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Pecan Bundt -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🌰">
+    <img src="alimentos/postres/TARTA PECAN BUNDT.png" alt="Tarta Pecan Bundt" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Pecan Bundt</div>
+    <div class="menu-card-desc">Bizcocho con nueces pecanas y glaseado de caramelo.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Red Velvet Cheesecake -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/TARTA RED VELVET CHEESECAKE.png" alt="Tarta Red Velvet Cheesecake" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Red Velvet Cheesecake</div>
+    <div class="menu-card-desc">Combinación de red velvet y cheesecake.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Royal Rose -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🌹">
+    <img src="alimentos/postres/TARTA ROYAL ROSE.png" alt="Tarta Royal Rose" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Royal Rose</div>
+    <div class="menu-card-desc">Elegante tarta decorada con rosas de pasta de azúcar.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Sachet -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🎀">
+    <img src="alimentos/postres/TARTA SACHET.png" alt="Tarta Sachet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Sachet</div>
+    <div class="menu-card-desc">Presentación en forma de bolso o sobre. Ideal para regalos.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tarta Selva Negra -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍒">
+    <img src="alimentos/postres/TARTA SELVA NEGRA.png" alt="Tarta Selva Negra" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Selva Negra</div>
+    <div class="menu-card-desc">Bizcocho de chocolate, cerezas y nata. Un clásico alemán.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Tartas Red Velvet (3 variantes) -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/TARTAS RED VELVET 1.png" alt="Tarta Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Red Velvet (variante 1)</div>
+    <div class="menu-card-desc">Presentación clásica con frosting de queso.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/TARTAS RED VELVET 2.png" alt="Tarta Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Red Velvet (variante 2)</div>
+    <div class="menu-card-desc">Decoración con virutas de chocolate.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍰">
+    <img src="alimentos/postres/TARTAS RED VELVET 3.png" alt="Tarta Red Velvet" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Tarta Red Velvet (variante 3)</div>
+    <div class="menu-card-desc">Con perlas de chocolate y flores de azúcar.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
+
+<!-- Torrijas Caseras -->
+<div class="menu-card">
+  <div class="menu-card-img-wrap" data-emoji="🍞">
+    <img src="alimentos/postres/TORRIJAS CASERAS.png" alt="Torrijas Caseras" onerror="this.parentElement.classList.add('no-img')"/>
+  </div>
+  <div class="menu-card-badge">🔥 Favorito</div>
+  <div class="menu-card-body">
+    <div class="menu-card-name">Torrijas Caseras</div>
+    <div class="menu-card-desc">Pan remojado en leche y huevo, frito y espolvoreado con canela. Disponibles en temporada.</div>
+    <div class="menu-card-footer"><span class="menu-card-price">Consultar</span></div>
+  </div>
+</div>
       </div>
     </div>
     <p class="carousel-hint">← Desliza para ver más →</p>
-  </div>
 
+  </div>
+</div>
   <!-- ══════════════════════════
        MENÚS COMPLETOS
   ══════════════════════════ -->
