@@ -503,6 +503,297 @@
       background: linear-gradient(135deg,#0d1b18,#142622);
     }
 
+    /* ══════════════════════════════════════
+       POSTRES PERSAS · Subsección
+    ══════════════════════════════════════ */
+    .postres-persa-section {
+      margin-top: clamp(2.4rem, 5vw, 4rem);
+      padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1rem, 3vw, 1.8rem);
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(61,155,138,.10) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(20,38,34,.55), rgba(13,27,24,.4));
+      border: 1px solid rgba(98,196,176,.18);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    .postres-persa-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg,
+        transparent,
+        var(--persa) 20%,
+        var(--persa-light) 50%,
+        var(--persa) 80%,
+        transparent);
+    }
+    .postres-persa-head {
+      text-align: center;
+      margin-bottom: clamp(1.6rem, 3.5vw, 2.4rem);
+    }
+    .postres-persa-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.55rem, 1.2vw, .68rem);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--persa-light);
+      margin-bottom: .7rem;
+      display: inline-flex; align-items: center; gap: .6rem;
+    }
+    .postres-persa-eyebrow::before,
+    .postres-persa-eyebrow::after {
+      content: ''; display: inline-block;
+      width: clamp(20px, 6vw, 50px); height: 1px;
+      background: linear-gradient(90deg, transparent, var(--persa-light));
+    }
+    .postres-persa-eyebrow::after {
+      background: linear-gradient(90deg, var(--persa-light), transparent);
+    }
+    .postres-persa-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.5rem, 3.6vw, 2.3rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--persa-pale), var(--persa-light), var(--persa));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+      margin-bottom: .55rem;
+    }
+    .postres-persa-subtitle {
+      font-size: clamp(.82rem, 1.3vw, .95rem);
+      font-style: italic;
+      color: rgba(159,224,211,.62);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .postres-persa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: clamp(.9rem, 2vw, 1.4rem);
+    }
+    .postre-persa-card {
+      background: linear-gradient(160deg, rgba(30,77,68,.45), rgba(13,27,24,.7));
+      border: 1px solid rgba(98,196,176,.18);
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+      position: relative;
+    }
+    .postre-persa-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(98,196,176,.45);
+      box-shadow: 0 14px 34px rgba(30,77,68,.45), 0 0 0 1px rgba(98,196,176,.15);
+    }
+    .postre-persa-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #0d1b18, #142622);
+      overflow: hidden;
+      position: relative;
+      pointer-events: none;
+    }
+    .postre-persa-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform .5s ease;
+    }
+    .postre-persa-card:hover .postre-persa-img-wrap img { transform: scale(1.06); }
+    .postre-persa-img-wrap.no-img img { display: none; }
+    .postre-persa-img-wrap.no-img::after {
+      content: '🍯';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; opacity: .55;
+    }
+    .postre-persa-body {
+      padding: .95rem 1rem 1rem;
+      display: flex; flex-direction: column;
+      gap: .55rem;
+      flex: 1;
+    }
+    .postre-persa-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.78rem, 1.1vw, .9rem);
+      font-weight: 600;
+      color: var(--persa-pale);
+      line-height: 1.35;
+      letter-spacing: .01em;
+      min-height: 2.7em;
+    }
+    .postre-persa-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(98,196,176,.35), transparent);
+      margin: .15rem 0;
+    }
+    .postre-persa-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .postre-persa-price {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(.95rem, 1.4vw, 1.1rem);
+      color: var(--persa-light);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .postre-persa-price.unset { color: rgba(159,224,211,.4); font-weight: 400; }
+    .postre-persa-qty {
+      font-family: 'Cinzel', serif;
+      font-size: .58rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border: 1px solid rgba(98,196,176,.3);
+      color: rgba(159,224,211,.7);
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .postre-persa-qty.unset { color: rgba(159,224,211,.35); border-color: rgba(98,196,176,.18); }
+    .postre-persa-extra {
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      letter-spacing: .08em;
+      color: rgba(159,224,211,.55);
+      margin-top: .25rem;
+      padding-top: .45rem;
+      border-top: 1px dashed rgba(98,196,176,.18);
+    }
+    .postre-persa-extra strong { color: var(--persa-light); font-weight: 700; }
+
+    /* Aviso "Incluido en los menús" */
+    .incluido-notice {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .9rem 1.1rem;
+      margin-bottom: clamp(1.4rem, 3vw, 2rem);
+      background: linear-gradient(135deg, rgba(61,155,138,.18), rgba(98,196,176,.06));
+      border: 1px solid rgba(98,196,176,.3);
+      border-left: 3px solid var(--persa-light);
+      border-radius: 4px;
+      position: relative;
+    }
+    .incluido-notice-icon {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--persa), var(--persa-dark));
+      border-radius: 50%;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 3px rgba(61,155,138,.15);
+    }
+    .incluido-notice-text {
+      flex: 1;
+      font-size: clamp(.78rem, 1.2vw, .9rem);
+      line-height: 1.55;
+      color: rgba(159,224,211,.85);
+    }
+    .incluido-notice-text strong {
+      color: var(--persa-pale);
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    /* ══════════════════════════════════════
+       BEBIDAS PERSAS · Incluidas en menús
+    ══════════════════════════════════════ */
+    .bebidas-persa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: clamp(.8rem, 2vw, 1.2rem);
+    }
+    .bebida-persa-card {
+      background: linear-gradient(160deg, rgba(30,77,68,.45), rgba(13,27,24,.7));
+      border: 1px solid rgba(98,196,176,.18);
+      border-radius: 5px;
+      padding: 1.3rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      text-align: center;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .bebida-persa-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(98,196,176,.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .bebida-persa-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(98,196,176,.45);
+      box-shadow: 0 14px 32px rgba(30,77,68,.4);
+    }
+    .bebida-persa-icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(98,196,176,.18), rgba(30,77,68,.4));
+      border: 1px solid rgba(98,196,176,.25);
+      border-radius: 50%;
+      font-size: 1.7rem;
+      position: relative; z-index: 1;
+    }
+    .bebida-persa-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.78rem, 1.15vw, .9rem);
+      font-weight: 600;
+      color: var(--persa-pale);
+      letter-spacing: .02em;
+      line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .bebida-persa-tag {
+      font-family: 'Cinzel', serif;
+      font-size: .55rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border: 1px solid rgba(98,196,176,.3);
+      color: rgba(159,224,211,.65);
+      border-radius: 20px;
+      position: relative; z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      .postres-persa-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: .7rem;
+      }
+      .postre-persa-body { padding: .7rem .75rem .85rem; gap: .4rem; }
+      .postre-persa-name { font-size: .74rem; min-height: 2.6em; }
+      .postre-persa-price { font-size: .88rem; }
+      .postre-persa-qty { font-size: .52rem; padding: 3px 7px; }
+      .postre-persa-extra { font-size: .55rem; }
+
+      .incluido-notice { gap: .65rem; padding: .75rem .85rem; }
+      .incluido-notice-icon { width: 32px; height: 32px; font-size: .95rem; }
+      .incluido-notice-text { font-size: .76rem; }
+
+      .bebidas-persa-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: .65rem;
+      }
+      .bebida-persa-card { padding: 1rem .75rem .85rem; gap: .45rem; }
+      .bebida-persa-icon { width: 46px; height: 46px; font-size: 1.4rem; }
+      .bebida-persa-name { font-size: .72rem; }
+      .bebida-persa-tag { font-size: .5rem; padding: 2px 7px; }
+    }
+    @media (max-width: 380px) {
+      .postres-persa-grid { grid-template-columns: 1fr 1fr; }
+      .bebidas-persa-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     .menu-card-badge {
       position: absolute; top: 10px; right: 10px; background: var(--ember); color: #fff;
       font-family: 'Cinzel', serif; font-size: .54rem; letter-spacing: .07em;
@@ -2530,6 +2821,234 @@
       </div>
     </div>
     <p class="carousel-hint">← Desliza para ver más →</p>
+
+    <!-- ══════════════════════════════════════
+         POSTRES PERSAS · Subsección
+    ══════════════════════════════════════ -->
+    <section class="postres-persa-section" aria-label="Postres Persas">
+      <header class="postres-persa-head">
+        <p class="postres-persa-eyebrow">✦ Dulces de la Tierra Natal ✦</p>
+        <h3 class="postres-persa-title">Postres Persas Disponibles</h3>
+        <p class="postres-persa-subtitle">
+          Una selección artesanal de baklawas, dulces tradicionales y panes caseros que acompañan a la perfección cualquier menú persa.
+        </p>
+      </header>
+
+      <div class="incluido-notice" role="note">
+        <span class="incluido-notice-icon" aria-hidden="true">🍯</span>
+        <p class="incluido-notice-text">
+          <strong>¿Pides un menú persa?</strong> Estos son los postres artesanos que se incluyen en todos los menús que indican <em>«incluye postre»</em>. También puedes adquirirlos por separado.
+        </p>
+      </div>
+
+      <div class="postres-persa-grid">
+
+        <!-- 1. Baklawa DEDO, relleno de almendras -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Baklawa DEDO,relleno de almendras.png"
+                 alt="Baklawa Dedo, relleno de almendras" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Baklawa Dedo · Relleno de Almendras</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Baklawa, relleno de coco y almendra -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Baklawa, relleno de coco y almendra.png"
+                 alt="Baklawa, relleno de coco y almendra" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Baklawa · Coco y Almendra</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Baklawa, relleno de nueces y canela -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Baklawa, relleno de nueces y canela.png"
+                 alt="Baklawa, relleno de nueces y canela" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Baklawa · Nueces y Canela</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Chocolate Pistachio Baklava -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/chocolate pistachio baklava..png"
+                 alt="Chocolate Pistachio Baklava" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Chocolate Pistachio Baklava</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Daymant — Baklawa relleno de pistacho y azafrán natural -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Daymant,baklawa relleno de pistacho y azafrán natural 100gr 2,80€.png"
+                 alt="Daymant, baklawa relleno de pistacho y azafrán natural" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Daymant · Pistacho y Azafrán Natural</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price">2,80€</span>
+              <span class="postre-persa-qty">100 gr</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Gelabi — típico dulce persa con pistacho y miel -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/GELABI,TIPICO DULCE PERSIA, CON PISTACHO Y MIEL.png"
+                 alt="Gelabi, típico dulce persa con pistacho y miel" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Gelabi · Pistacho y Miel</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. Pan casero de Persia con masa madre -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Pan casero de persia, hecha con masa madre ,1uni 4,90,€ 1 porcion 0,80€.png"
+                 alt="Pan casero de Persia con masa madre" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Pan Casero Persa · Masa Madre</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price">4,90€</span>
+              <span class="postre-persa-qty">1 Unidad 30x10</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. Pistachio Baklava Rose -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Pistachio Baklava Rose.png"
+                 alt="Pistachio Baklava Rose" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Pistachio Baklava Rose</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price unset">--</span>
+              <span class="postre-persa-qty unset">--</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. Tarta de Baklava — relleno de pistacho, agua de rosas y pétalos comestibles -->
+        <article class="postre-persa-card">
+          <div class="postre-persa-img-wrap">
+            <img src="alimentos/postres persa/Tarta de baklawa-relleno de pistacho agua de rosas y petalos de rosa comenstibles La tarta de 30x30 55€.png"
+                 alt="Tarta de baklava con pistacho, agua de rosas y pétalos de rosa comestibles" loading="lazy"
+                 onerror="this.parentElement.classList.add('no-img')"/>
+          </div>
+          <div class="postre-persa-body">
+            <div class="postre-persa-name">Tarta de Baklava · Pistacho, Agua de Rosas y Pétalos</div>
+            <div class="postre-persa-divider"></div>
+            <div class="postre-persa-footer">
+              <span class="postre-persa-price">55,00€</span>
+              <span class="postre-persa-qty">Tarta 30×30</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- ══ FIN POSTRES PERSAS ══ -->
+
+    <!-- ══════════════════════════════════════
+         BEBIDAS INCLUIDAS · Menús Persas
+    ══════════════════════════════════════ -->
+    <section class="postres-persa-section" aria-label="Bebidas incluidas en los menús persas" style="margin-top: clamp(1.6rem, 3vw, 2.4rem);">
+      <header class="postres-persa-head">
+        <p class="postres-persa-eyebrow">✦ Para acompañar tu menú ✦</p>
+        <h3 class="postres-persa-title">Bebidas Incluidas</h3>
+        <p class="postres-persa-subtitle">
+          Cada menú persa incluye una bebida fría a elegir entre las siguientes opciones.
+        </p>
+      </header>
+
+      <div class="incluido-notice" role="note">
+        <span class="incluido-notice-icon" aria-hidden="true">🥤</span>
+        <p class="incluido-notice-text">
+          <strong>Incluido en todos los menús persas.</strong> Indica tu bebida preferida al hacer el pedido y la añadiremos sin coste adicional.
+        </p>
+      </div>
+
+      <div class="bebidas-persa-grid">
+
+        <article class="bebida-persa-card">
+          <div class="bebida-persa-icon" aria-hidden="true">🥤</div>
+          <div class="bebida-persa-name">Fanta Naranja</div>
+          <span class="bebida-persa-tag">Incluida</span>
+        </article>
+
+        <article class="bebida-persa-card">
+          <div class="bebida-persa-icon" aria-hidden="true">🍋</div>
+          <div class="bebida-persa-name">Fanta Limón</div>
+          <span class="bebida-persa-tag">Incluida</span>
+        </article>
+
+        <article class="bebida-persa-card">
+          <div class="bebida-persa-icon" aria-hidden="true">💧</div>
+          <div class="bebida-persa-name">Agua</div>
+          <span class="bebida-persa-tag">Incluida</span>
+        </article>
+
+        <article class="bebida-persa-card">
+          <div class="bebida-persa-icon" aria-hidden="true">🥃</div>
+          <div class="bebida-persa-name">Coca-Cola Clásica</div>
+          <span class="bebida-persa-tag">Incluida</span>
+        </article>
+
+      </div>
+    </section>
+    <!-- ══ FIN BEBIDAS INCLUIDAS ══ -->
+
   </div>
   <!-- ══ FIN COCINA PERSA ══ -->
 
